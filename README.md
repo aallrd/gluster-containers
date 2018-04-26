@@ -10,6 +10,13 @@ The support matrix of GlusterFS and container versions:
 |GlusterFS Client Container       |`v3.13`            |`latest`            |`glusterfs-client`
 |Gluster S3 Server Container         |`v4.0,  v3.13, v3.12, v3.10`|`latest`|`gluster-s3`
 
+## ARM image instructions
+
+    docker build -t aallrd/gluster-centos:arm32v7-latest -f ./CentOS/Dockerfile.arm32v7 ./CentOS/
+    docker push aallrd/gluster-centos:arm32v7-latest
+    docker manifest create aallrd/gluster-centos:latest aallrd/gluster-centos:arm32v7-latest
+    docker manifest annotate aallrd/gluster-centos:latest aallrd/gluster-centos:arm32v7-latest --os linux --arch arm
+    docker manifest push aallrd/gluster-centos:latest
 
 ## Gluster Server Docker container:
 
