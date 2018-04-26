@@ -15,7 +15,7 @@ LABEL architecture="armv7" \
       io.openshift.tags="gluster,glusterfs,glusterfs-centos"
 
 RUN yum --setopt=tsflags=nodocs -y update && yum install -y wget createrepo && yum clean all && \
-wget https://github.com/aallrd/glusterfs-build-rpms/releases/download/4.0-centos-7/glusterfs-rpms-armv7l.tar.gz && \
+wget -q https://github.com/aallrd/glusterfs-build-rpms/releases/download/4.0-centos-7/glusterfs-rpms-armv7l.tar.gz && \
 tar -xzf glusterfs-rpms-armv7l.tar.gz && \
 rm -f glusterfs-rpms-armv7l.tar.gz && \
 mkdir -p /share/glusterfs/rpms && \
@@ -23,7 +23,7 @@ mv *.rpm /share/glusterfs/rpms && \
 ls -s /usr/bin/bash /bin/sh && \
 createrepo /share/glusterfs/rpms && \
 chmod -R o-w+r /share/glusterfs/rpms && \
-echo -e "[local]\nnameglusterfs_packages\nbaseurl=file:///share/glusterfs/rpms\nenabled=1\ngpgcheck=0\nprotect=1" > /etc/yum.repo.d/glusterfs.repo
+echo -e "[local]\nname=glusterfs_packages\nbaseurl=file:///share/glusterfs/rpms\nenabled=1\ngpgcheck=0\nprotect=1" > /etc/yum.repos.d/glusterfs.repo && \
 (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done) && \
 rm -f /lib/systemd/system/multi-user.target.wants/* &&\
 rm -f /etc/systemd/system/*.wants/* &&\
