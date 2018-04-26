@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ###
 # Description: Script to move the glusterfs initial setup to bind mounted directories of Atomic Host.
