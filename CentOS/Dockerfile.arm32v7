@@ -20,7 +20,8 @@ tar -xzf glusterfs-rpms-armv7l.tar.gz && \
 rm -f glusterfs-rpms-armv7l.tar.gz && \
 mkdir -p /share/glusterfs/rpms && \
 mv *.rpm /share/glusterfs/rpms && \
-ls -s /usr/bin/bash /bin/sh && \
+ln -s /usr/bin/bash /bin/sh && \
+cp /usr/bin/bash /bin/bash && \
 createrepo /share/glusterfs/rpms && \
 chmod -R o-w+r /share/glusterfs/rpms && \
 echo -e "[local]\nname=glusterfs_packages\nbaseurl=file:///share/glusterfs/rpms\nenabled=1\ngpgcheck=0\nprotect=1" > /etc/yum.repos.d/glusterfs.repo && \
