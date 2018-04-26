@@ -4,7 +4,7 @@ MAINTAINER Humble Chirammal hchiramm@redhat.com Mohamed Ashiq Liyazudeen mliyazu
 
 ENV container docker
 
-LABEL architecture="armv7" \
+LABEL architecture="arm32v7" \
       name="aallard/gluster-centos" \
       version="4.0" \
       vendor="CentOS Community" \
